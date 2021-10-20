@@ -1,0 +1,22 @@
+const languages = {
+  plaintext: 'Plaintext',
+  'text/x-c++src': 'C++',
+  'text/x-java': 'Java',
+  'text/x-csrc': 'C',
+  'text/x-csharp': 'C#',
+  'text/css': 'CSS',
+  'text/x-go': 'Golang',
+  'application/xml': 'HTML',
+  'text/javascript': 'Javascript',
+  'text/typescript': 'Typescript',
+  'text/x-markdown': 'Markdown',
+  'application/x-httpd-php': 'PHP',
+  'text/x-python': 'Python',
+  'text/x-rsrc': 'R',
+  'text/x-ruby': 'Ruby',
+  'text/x-rustsrc': 'Rust',
+  'text/x-scala': 'Scala',
+  'text/x-scss': 'SCSS',
+  'text/x-swift': 'Swift',
+};
+module.exports = languages;

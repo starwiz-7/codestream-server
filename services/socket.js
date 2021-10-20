@@ -1,4 +1,5 @@
 const { Server } = require('socket.io');
+const languages = require('./languages');
 
 const socketService = (httpServer) => {
   console.error(process.env.CLIENT_URL);
@@ -39,7 +40,7 @@ const socketService = (httpServer) => {
       const roomId = socketToRoom[socket.id];
       languageToRoom[roomId] = lang;
 
-      io.to(roomId).emit('emit-language-changed', lang);
+      io.to(roomId).emit('emit-language-changed', lang, languages[lang]);
     });
 
     // User changes a name
