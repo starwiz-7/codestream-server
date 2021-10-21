@@ -1,0 +1,7 @@
+{
+  "name": "Codestream-server",
+  "description": "A server to serve codestream website",
+  "repository": "https://github.com/starwiz-7/codestream-server",
+  "logo": "https://res.cloudinary.com/hackbot/image/upload/v1634825298/Codestream/default-monochrome-black_zrplwm.png",
+  "keywords": ["node", "express", "socket.io"]
+}
