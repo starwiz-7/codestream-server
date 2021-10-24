@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/starwiz-7/codestream-server#readme",
   "dependencies": {
+    "axios": "^0.23.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
