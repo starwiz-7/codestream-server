@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const { language } = require('../services/languages');
+
 require('dotenv').config();
 
 const router = express.Router();
@@ -12,7 +13,6 @@ router.post('/execute', async (req, res) => {
       message: 'Code or language should not be empty/undefined',
     });
   }
-  console.log(language);
   const response = await axios({
     method: 'POST',
     url: 'https://api.jdoodle.com/v1/execute',
