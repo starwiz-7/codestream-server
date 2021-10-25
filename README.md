@@ -7,8 +7,6 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -31,24 +29,26 @@
 </div>
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
-Codestream is a collaborative code-editor which can be used by remote teams to work on the code **together**. 
+
+Codestream is a collaborative code-editor which can be used by remote teams to work on the code **together**.
 This repository contains the server-side code for codestream.
 
 ### Built With
 
-* [Express.js](https://expressjs.com/)
-* [Node.js](https://nodejs.dev/)
-* [Socket.io](https://socket.io/)
-
-
+- [Express.js](https://expressjs.com/)
+- [Node.js](https://nodejs.dev/)
+- [Socket.io](https://socket.io/)
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
-
 ### Prerequisites
+
 For development, you will only need Node.js and a node global package, npm, installed in your environement.
+
 ### Node
 
 - #### Node installation on Windows
@@ -71,6 +71,7 @@ $ sudo apt install npm
 You can find more information about the installation on the [official Node.js website](https://nodejs.org/) and the [official NPM website](https://npmjs.org/).
 
 If the installation was successful, you should be able to run the following command.
+
 ```sh
 $ node --version
 
@@ -80,11 +81,13 @@ $ npm --version
 
 6.1.0
 ```
+
 If you need to update `npm`, you can make it using `npm`! Cool right? After running the following command, just open again the command line and be happy.
 
 ```sh
 $ npm install npm -g
 ```
+
 ### Installation
 
 1. Clone the repo
@@ -98,18 +101,18 @@ $ npm install npm -g
 3. Create a `.env` file and enter
    ```sh
    CLIENT_URL=http://localhost:3000
+   JDOODLE_CLIENT_ID=YOUR JDOODLE CLIENT ID
+   JDOODLE_CLIENT_SECRET=YOUR JDOODLE CLIENT SECRET
    ```
 
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
 See the [open issues](https://github.com/starwiz-7/codestream-server/issues) for a full list of proposed features (and known issues).
 
-
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -124,26 +127,28 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
+
 ## Contact
 
-Your Name - [@7Aryany](https://twitter.com/7Aryany) - aryan2019@iiitkottayam.ac.in
+Aryan Yadav - [@7Aryany](https://twitter.com/7Aryany) - aryan2019@iiitkottayam.ac.in
 
 Project Link: [https://github.com/starwiz-7/codestream-server](https://github.com/starwiz-7/codestream-server)
 
 <!-- ACKNOWLEDGMENTS -->
+
 ## Deployment
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/starwiz-7/codestream-server)
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/starwiz-7/codestream-server.svg?style=for-the-badge
 [contributors-url]: https://github.com/starwiz-7/codestream-server/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/starwiz-7/codestream-server.svg?style=for-the-badge

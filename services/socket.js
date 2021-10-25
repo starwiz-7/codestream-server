@@ -1,5 +1,5 @@
 const { Server } = require('socket.io');
-const languages = require('./languages');
+const { languages } = require('./languages');
 
 const socketService = (httpServer) => {
   console.error(process.env.CLIENT_URL);
