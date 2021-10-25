@@ -53,6 +53,23 @@ const socketService = (httpServer) => {
       io.to(roomId).emit('name-changed', userInfoMap.get(roomId));
     });
 
+    // When someone changes input data in room
+    socket.on('input-data', ({ data }) => {
+      const roomId = socketToRoom[socket.id];
+      io.to(roomId).emit('emit-input-data', { inputData: data });
+    });
+
+    // When someone tries to execute code
+    socket.on('execute-code-start', () => {
+      const roomId = socketToRoom[socket.id];
+      io.to(roomId).emit('emit-execute-code-start');
+    });
+
+    // Emit the response of the execution to everyone in the room
+    socket.on('code-executed', (data) => {
+      const roomId = socketToRoom[socket.id];
+      io.to(roomId).emit('emit-code-executed', data.data);
+    });
     // When a user gets disconnected
     socket.on('disconnect', () => {
       const roomId = socketToRoom[socket.id];
