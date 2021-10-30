@@ -2,7 +2,6 @@ const { Server } = require('socket.io');
 const { languages } = require('./languages');
 
 const socketService = (httpServer) => {
-  console.error(process.env.CLIENT_URL);
   const io = new Server(httpServer, {
     cors: {
       origin: process.env.CLIENT_URL,
@@ -70,6 +69,14 @@ const socketService = (httpServer) => {
       const roomId = socketToRoom[socket.id];
       io.to(roomId).emit('emit-code-executed', data.data);
     });
+
+    // When a user sends a message
+    socket.on('send-message', (messageData) => {
+      const roomId = socketToRoom[socket.id];
+      messageData.socketId = socket.id; // eslint-disable-line no-param-reassign
+      socket.broadcast.to(roomId).emit('message', messageData);
+    });
+
     // When a user gets disconnected
     socket.on('disconnect', () => {
       const roomId = socketToRoom[socket.id];
