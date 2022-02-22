@@ -41,23 +41,26 @@ const scrapeQuestion = async (url, hostname) => {
     }
   }
   // Leetcode scraper here
-  // else if (hostname === 'leetcode.com') {
-  //   try {
-  //     const response = await axios.get(url);
-  //     const $ = cheerio.load(response.data);
-  //     const questionData = $('div[data-key=description-content]')
-  //       // .children()
-  //       .html();
+  else if (hostname === 'leetcode.com') {
+    try {
+      const splitURL = url.split('/');
+      const response = await axios.get(
+        `https://leet-api-code.herokuapp.com/api/v1/${splitURL[4]}`,
+      );
 
-  //     console.log(questionData);
-  //   } catch (err) {
-  //     return {
-  //       error: true,
-  //       htmlString: '',
-  //     };
-  //   }
-  // }
-  else if (hostname === 'cses.fi') {
+      return response.data.status_code === 200
+        ? { error: false, htmlString: response.data.message[1].content }
+        : {
+            error: true,
+            htmlString: '',
+          };
+    } catch (err) {
+      return {
+        error: true,
+        htmlString: '',
+      };
+    }
+  } else if (hostname === 'cses.fi') {
     try {
       const response = await axios.get(url);
       const $ = cheerio.load(response.data);

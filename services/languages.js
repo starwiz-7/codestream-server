@@ -17,6 +17,7 @@ const languages = {
 };
 
 const language = new Map();
+// eslint-disable-next-line dot-notation
 language['plaintext'] = ['Plaintext'];
 language['text/x-c++src'] = ['C++', 'cpp17', 0];
 language['text/x-java'] = ['Java', 'java', 3];
