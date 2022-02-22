@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const { language } = require('../services/languages');
-
+const scrapeQuestion = require('../services/scrapeQuestion');
 require('dotenv').config();
 
 const router = express.Router();
@@ -29,4 +29,21 @@ router.post('/execute', async (req, res) => {
   return res.json(response.data);
 });
 
+router.post('/get-problem', async (req, res) => {
+  const { url, hostname } = req.body;
+  if (!url) {
+    return res.status(200).json({
+      message: 'URL should not be empty/undefined',
+    });
+  }
+
+  const questionData = await scrapeQuestion(url, hostname);
+  console.log(questionData);
+  if (questionData.error === true) {
+    return res
+      .status(404)
+      .json({ error: true, message: 'Cannot find problem with given URL' });
+  }
+  return res.status(200).json(questionData);
+});
 module.exports = router;
