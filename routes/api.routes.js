@@ -38,6 +38,7 @@ router.post('/get-problem', async (req, res) => {
   }
 
   const questionData = await scrapeQuestion(url, hostname);
+  console.log(questionData);
   if (questionData.error === true) {
     return res
       .status(404)

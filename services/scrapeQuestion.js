@@ -39,6 +39,44 @@ const scrapeQuestion = async (url, hostname) => {
         htmlString: '',
       };
     }
+  }
+  // Leetcode scraper here
+  // else if (hostname === 'leetcode.com') {
+  //   try {
+  //     const response = await axios.get(url);
+  //     const $ = cheerio.load(response.data);
+  //     const questionData = $('div[data-key=description-content]')
+  //       // .children()
+  //       .html();
+
+  //     console.log(questionData);
+  //   } catch (err) {
+  //     return {
+  //       error: true,
+  //       htmlString: '',
+  //     };
+  //   }
+  // }
+  else if (hostname === 'cses.fi') {
+    try {
+      const response = await axios.get(url);
+      const $ = cheerio.load(response.data);
+      $('.skeleton .nav').remove();
+      $('.title-block > h3').remove();
+      $('script').remove();
+
+      const questionData = $('.skeleton').html();
+
+      const formattedData = questionData.replace(/\$/gm, '%%') || '';
+      return questionData === null
+        ? { error: true, htmlString: '' }
+        : { error: false, htmlString: formattedData };
+    } catch (err) {
+      return {
+        error: true,
+        htmlString: '',
+      };
+    }
   } else {
     return {
       error: true,
