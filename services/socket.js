@@ -77,6 +77,17 @@ const socketService = (httpServer) => {
       socket.broadcast.to(roomId).emit('message', messageData);
     });
 
+    // When question data is changed
+    socket.on('question-data-received', (questionData) => {
+      const roomId = socketToRoom[socket.id];
+      io.to(roomId).emit('question-data-received', questionData);
+    });
+
+    socket.on('question-data-error', (questionData) => {
+      const roomId = socketToRoom[socket.id];
+      io.to(roomId).emit('question-data-error', questionData);
+    });
+
     // When a user gets disconnected
     socket.on('disconnect', () => {
       const roomId = socketToRoom[socket.id];

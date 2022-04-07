@@ -11,7 +11,7 @@ const scrapeQuestion = async (url, hostname) => {
       const questionData = $('.problemindexholder').html();
       return questionData === null
         ? { error: true, htmlString: '' }
-        : { error: false, htmlString: questionData };
+        : { error: false, htmlString: questionData, hostname };
     } catch (err) {
       return {
         error: true,
@@ -32,7 +32,7 @@ const scrapeQuestion = async (url, hostname) => {
         questionData?.replace(/<var>/g, '%%')?.replace(/<\/var>/g, '%%') || '';
       return questionData === null
         ? { error: true, htmlString: '' }
-        : { error: false, htmlString: DelimitterCorrected };
+        : { error: false, htmlString: DelimitterCorrected, hostname };
     } catch (err) {
       return {
         error: true,
@@ -49,7 +49,12 @@ const scrapeQuestion = async (url, hostname) => {
       );
 
       return response.data.status_code === 200
-        ? { error: false, htmlString: response.data.message[1].content }
+        ? {
+            error: false,
+            questionName: response.data.message[0].name,
+            htmlString: response.data.message[1].content,
+            hostname,
+          }
         : {
             error: true,
             htmlString: '',
@@ -73,7 +78,7 @@ const scrapeQuestion = async (url, hostname) => {
       const formattedData = questionData.replace(/\$/gm, '%%') || '';
       return questionData === null
         ? { error: true, htmlString: '' }
-        : { error: false, htmlString: formattedData };
+        : { error: false, htmlString: formattedData, hostname };
     } catch (err) {
       return {
         error: true,
