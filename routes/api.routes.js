@@ -38,10 +38,9 @@ router.post('/get-problem', async (req, res) => {
   }
 
   const questionData = await scrapeQuestion(url, hostname);
-  console.log(questionData);
   if (questionData.error === true) {
     return res
-      .status(404)
+      .status(406)
       .json({ error: true, message: 'Cannot find problem with given URL' });
   }
   return res.status(200).json(questionData);
