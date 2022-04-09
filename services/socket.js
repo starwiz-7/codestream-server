@@ -80,12 +80,9 @@ const socketService = (httpServer) => {
     // When question data is changed
     socket.on('question-data-received', (questionData) => {
       const roomId = socketToRoom[socket.id];
-      io.to(roomId).emit('question-data-received', questionData);
-    });
-
-    socket.on('question-data-error', (questionData) => {
-      const roomId = socketToRoom[socket.id];
-      io.to(roomId).emit('question-data-error', questionData);
+      socket.broadcast
+        .to(roomId)
+        .emit('emit-question-data-received', questionData);
     });
 
     // When a user gets disconnected
